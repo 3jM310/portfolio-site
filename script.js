@@ -45,22 +45,34 @@ const projects = [
 ];
 
 const projectsList = document.getElementById('projects-list');
+const filterButtons = document.querySelectorAll('#filter-buttons button');
 
-if (projectsList) {
-  projects.forEach(function (project) {
+function renderProjects(filter) {
+  projectsList.innerHTML = ''; // clear current list
+
+  const filtered = filter === 'all'
+    ? projects
+    : projects.filter(function (project) {
+        return project.status.toLowerCase() === filter;
+      });
+
+  filtered.forEach(function (project) {
     const li = document.createElement('li');
-
     const badge = document.createElement('span');
     badge.textContent = project.status;
     badge.className = 'status-badge status-' + project.status.toLowerCase().replace(' ', '-');
-
     li.textContent = `${project.name} — ${project.description} `;
     li.appendChild(badge);
     projectsList.appendChild(li);
   });
 }
 
+if (projectsList) {
+  renderProjects('all');
 
-
-
-
+  filterButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      renderProjects(button.dataset.status);
+    });
+  });
+}
