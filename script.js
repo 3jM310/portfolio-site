@@ -38,10 +38,10 @@ if (themeToggle) {
 }
 
 const projects = [
-  { name: "Diseño de interiores", description: "Coming soon" },
-  { name: "Cielos falsos", description: "Coming soon" },
-  { name: "Steel Framing", description: "Coming soon" },
-  { name: "Pintura", description: "Coming soon" }
+  { name: "Diseño de interiores", description: "Coming soon", status: "In Progress" },
+  { name: "Cielos falsos", description: "Coming soon", status: "Completed" },
+  { name: "Steel Framing", description: "Coming soon", status: "Planned" },
+  { name: "Pintura", description: "Coming soon", status: "Completed" }
 ];
 
 const projectsList = document.getElementById('projects-list');
@@ -49,10 +49,18 @@ const projectsList = document.getElementById('projects-list');
 if (projectsList) {
   projects.forEach(function (project) {
     const li = document.createElement('li');
-    li.textContent = `${project.name} — ${project.description}`;
+
+    const badge = document.createElement('span');
+    badge.textContent = project.status;
+    badge.className = 'status-badge status-' + project.status.toLowerCase().replace(' ', '-');
+
+    li.textContent = `${project.name} — ${project.description} `;
+    li.appendChild(badge);
     projectsList.appendChild(li);
   });
 }
+
+
 
 
 

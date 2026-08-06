@@ -64,3 +64,27 @@ body.dark-mode {
 body.dark-mode nav a {
   color: #66aaff;
 }
+
+.status-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75em;
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+.status-completed {
+  background-color: #2e7d32;
+  color: white;
+}
+
+.status-in-progress {
+  background-color: #f9a825;
+  color: black;
+}
+
+.status-planned {
+  background-color: #616161;
+  color: white;
+}
