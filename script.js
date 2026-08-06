@@ -37,5 +37,22 @@ if (themeToggle) {
   });
 }
 
+const projects = [
+  { name: "Diseño de interiores", description: "Coming soon" },
+  { name: "Cielos falsos", description: "Coming soon" },
+  { name: "Steel Framing", description: "Coming soon" },
+  { name: "Pintura", description: "Coming soon" }
+];
+
+const projectsList = document.getElementById('projects-list');
+
+if (projectsList) {
+  projects.forEach(function (project) {
+    const li = document.createElement('li');
+    li.textContent = `${project.name} — ${project.description}`;
+    projectsList.appendChild(li);
+  });
+}
+
 
 
