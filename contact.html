@@ -12,26 +12,27 @@
             <a href="contact.html">Contact</a>
         </nav>
         <h1>Cotiza</h1>
-        <div class="container">
-            <form action="">
-                <label for="">Primer Nombre</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Tu Nombre">
+        <form id="contact-form">
+            <div>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name">
+                        </div>
 
-                <label for="">Primer Apellido</label>
-                <input type="text" id="apellido" name="apellido" placeholder="Tu Apellido">
+            <div>
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email">
+            </div>
 
-                <label for="country">Country</label>
-                <select id="country" name="country">
-                    <option value="australia">Australia</option>
-                    <option value="canada">Canada</option>
-                    <option value="usa">USA</option>
-                </select>
+            <div>
+                <label for="message">Message</label>
+                <textarea id="message" name="message"></textarea>
+            </div>
 
-                <label for="subject">Subject</label>
-                <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+            <button type="submit">Send</button>
+        </form>
 
-                <input type="submit" value="Submit">
-            </form>
-        </div>
+        <p id="form-status"></p>
+
+        <script src="script.js"></script>  
     </body>
-</html>
+</html> 
