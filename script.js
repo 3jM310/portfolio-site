@@ -61,6 +61,8 @@ const filterButtons = document.querySelectorAll('#filter-buttons button');
 
 function renderProjectsFromArray(list) {
   projectsList.innerHTML = '';
+  const countDisplay = document.getElementById('project-count');
+  countDisplay.textContent = ` Mostrando ${list.length}`;
 
   list.forEach(function (project) {
     const li = document.createElement('li');
