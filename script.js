@@ -31,9 +31,21 @@ if (form) {
 
 const themeToggle = document.getElementById('theme-toggle');
 
+// On page load, check if dark mode was saved previously
+if (localStorage.getItem('theme') === 'dark') {
+  document.body.classList.add('dark-mode');
+}
+
 if (themeToggle) {
   themeToggle.addEventListener('click', function () {
     document.body.classList.toggle('dark-mode');
+
+    // Save the current state
+    if (document.body.classList.contains('dark-mode')) {
+      localStorage.setItem('theme', 'dark');
+    } else {
+      localStorage.setItem('theme', 'light');
+    }
   });
 }
 
