@@ -47,16 +47,10 @@ const projects = [
 const projectsList = document.getElementById('projects-list');
 const filterButtons = document.querySelectorAll('#filter-buttons button');
 
-function renderProjects(filter) {
-  projectsList.innerHTML = ''; // clear current list
+function renderProjectsFromArray(list) {
+  projectsList.innerHTML = '';
 
-  const filtered = filter === 'all'
-    ? projects
-    : projects.filter(function (project) {
-        return project.status.toLowerCase() === filter;
-      });
-
-  filtered.forEach(function (project) {
+  list.forEach(function (project) {
     const li = document.createElement('li');
     const badge = document.createElement('span');
     badge.textContent = project.status;
@@ -67,6 +61,16 @@ function renderProjects(filter) {
   });
 }
 
+function renderProjects(filter) {
+  const filtered = filter === 'all'
+    ? projects
+    : projects.filter(function (project) {
+        return project.status.toLowerCase() === filter;
+      });
+
+  renderProjectsFromArray(filtered);
+}
+
 if (projectsList) {
   renderProjects('all');
 
@@ -74,5 +78,16 @@ if (projectsList) {
     button.addEventListener('click', function () {
       renderProjects(button.dataset.status);
     });
+  });
+}
+
+const searchInput = document.getElementById('search-input');
+if (searchInput) {
+  searchInput.addEventListener('input', function () {
+    const query = searchInput.value.toLowerCase();
+    const filtered = projects.filter(function (project) {
+      return project.name.toLowerCase().includes(query);
+    });
+    renderProjectsFromArray(filtered);
   });
 }
